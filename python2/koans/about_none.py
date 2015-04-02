@@ -37,15 +37,15 @@ class AboutNone(Koan):
             # Need a recap on how to evaluate __class__ attributes?
             #   https://github.com/gregmalcolm/python_koans/wiki/Class-Attribute
 
-            self.assertEqual(__, ex.__class__)
+            self.assertEqual(AttributeError, ex.__class__)
 
             # What message was attached to the exception?
             # (HINT: replace __ with part of the error message.)
-            self.assertMatch(__, ex.args[0])
+            self.assertMatch("NoneType" , ex.args[0])
 
     def test_none_is_distinct(self):
         """
         None is distinct from other things which are False.
         """
-        self.assertEqual(____, None is not 0)
-        self.assertEqual(____, None is not False)
+        self.assertTrue(None is not 0)
+        self.assertTrue(None is not False)
