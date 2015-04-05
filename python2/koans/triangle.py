@@ -19,6 +19,9 @@
 #
 def triangle(a, b, c):
     # DELETE 'PASS' AND WRITE THIS CODE
+    if a >= b+c or b >= a+c or c >= a+b:
+	raise TriangleError
+
     sides = {a, b, c}
     if len(sides) == 1: # if all 3 are equal, 2 should be ignored in the set, leaving just 1
 	return 'equilateral'
