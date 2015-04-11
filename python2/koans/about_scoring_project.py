@@ -35,14 +35,14 @@ from runner.koan import *
 
 def score(dice):
     single_scores = {1 : 100, 2 : 0, 3 : 0, 4 : 0, 5 : 50, 6 : 0}
-    triple_scores = {1 : 1000, 2 : 200, 3 : 300, 4 : 400, 5 : 500, 6 : 600}
+    triplet_scores = {1 : 1000, 2 : 2*100, 3 : 3*100, 4 : 4*100, 5 : 5*100, 6 : 6*100}
 
     score = 0
-    for i in range(1,7):
-	score += dice.count(i) * single_scores[i]
-	if dice.count(i) >= 3:
-	    score += triple_scores[i]
-	    score -= 3 * single_scores[i]	
+    for face in range(1,7): # iterate die faces
+	score += dice.count(face) * single_scores[face]
+	if dice.count(face) >= 3:
+	    score += triplet_scores[face]
+	    score -= 3 * single_scores[face] # correct for double counting
 
     return score
 
