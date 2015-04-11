@@ -34,44 +34,17 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
+    single_scores = {1 : 100, 2 : 0, 3 : 0, 4 : 0, 5 : 50, 6 : 0}
+    triple_scores = {1 : 1000, 2 : 200, 3 : 300, 4 : 400, 5 : 500, 6 : 600}
+
     score = 0
-
-    score += dice.count(1) * 100
-    score += dice.count(5) * 50
-
-    if dice.count(1) >= 3:
-	score += 1000
-        score -= 3 * 100
-    if dice.count(2) >= 3:
-	score += 100 * 2
-    if dice.count(3) >= 3:
-	score += 100 * 3
-    if dice.count(4) >= 3:
-	score += 100 * 4
-    if dice.count(5) >= 3:
-	score += 100 * 5
-  	score -= 3 * 50
-    if dice.count(6) >= 3:
-	score += 100 * 6
+    for i in range(1,7):
+	score += dice.count(i) * single_scores[i]
+	if dice.count(i) >= 3:
+	    score += triple_scores[i]
+	    score -= 3 * single_scores[i]	
 
     return score
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
 
 
 
